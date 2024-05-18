@@ -19,7 +19,7 @@ const Banner = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden rounded-b-xl">
       <div
         className="flex transition-transform duration-1000"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
