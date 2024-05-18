@@ -31,6 +31,11 @@ const PopularMenu = () => {
           </div>
         ))}
       </div>
+      <div className="text-center">
+        <button className="btn btn-outline text-main px-10 hover:bg-[#E7811B] hover:text-white hover:border-[#E7811B] mt-16">
+          View Full Menu
+        </button>
+      </div>
     </div>
   );
 };
