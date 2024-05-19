@@ -29,7 +29,7 @@ const Navbar = () => {
       </li>
       <li>
         <Link
-          to=""
+          to="/menu"
           className="lg:text-white lg:hover:bg-[#FF9933] hover:text-white"
         >
           Our Menu

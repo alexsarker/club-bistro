@@ -26,7 +26,7 @@ const Category = () => {
           clickable: true,
         }}
         modules={[FreeMode, Pagination]}
-        className="mySwiper"
+        className="mySwiper max-w-4xl"
       >
         <SwiperSlide>
           <img src={slide1} />
