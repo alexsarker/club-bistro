@@ -5,7 +5,7 @@ const Navbar = () => {
     <>
       <li>
         <Link
-          to=""
+          to="/"
           className="lg:text-white lg:hover:bg-[#FF9933] hover:text-white"
         >
           Home
@@ -37,7 +37,7 @@ const Navbar = () => {
       </li>
       <li>
         <Link
-          to=""
+          to="/shop"
           className="lg:text-white lg:hover:bg-[#FF9933] hover:text-white"
         >
           Our Shop
