@@ -9,6 +9,7 @@ import SectionTitle from "../Components/SectionTitle";
 import { Parallax } from "react-parallax";
 import useMenu from "../hooks/useMenu";
 import MenuCategory from "../Components/MenuCategory";
+import { Link } from "react-router-dom";
 
 const Menu = () => {
   const [menu] = useMenu();
@@ -48,7 +49,7 @@ const Menu = () => {
         strength={-200}
       >
         <Cover
-          heading={"DESSERTS"}
+          heading={"desserts"}
           subHeading={
             "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
           }
@@ -56,6 +57,14 @@ const Menu = () => {
       </Parallax>
       <div>
         <MenuCategory data={dessert} />
+        <div className="text-center mt-12">
+          <Link
+            to="/shop/dessert"
+            className="btn bg-main text-white px-10 border-none hover:bg-[#E7811B]"
+          >
+            Order Now
+          </Link>
+        </div>
       </div>
 
       <Parallax
@@ -64,7 +73,7 @@ const Menu = () => {
         strength={-200}
       >
         <Cover
-          heading={"PIZZA"}
+          heading={"pizza"}
           subHeading={
             "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
           }
@@ -72,6 +81,14 @@ const Menu = () => {
       </Parallax>
       <div>
         <MenuCategory data={pizza} />
+        <div className="text-center mt-12">
+          <Link
+            to="/shop/pizza"
+            className="btn bg-main text-white px-10 border-none hover:bg-[#E7811B]"
+          >
+            Order Now
+          </Link>
+        </div>
       </div>
 
       <Parallax
@@ -80,7 +97,7 @@ const Menu = () => {
         strength={-200}
       >
         <Cover
-          heading={"SALADS"}
+          heading={"salads"}
           subHeading={
             "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
           }
@@ -88,11 +105,19 @@ const Menu = () => {
       </Parallax>
       <div>
         <MenuCategory data={salad} />
+        <div className="text-center mt-12">
+          <Link
+            to="/shop/salad"
+            className="btn bg-main text-white px-10 border-none hover:bg-[#E7811B]"
+          >
+            Order Now
+          </Link>
+        </div>
       </div>
 
       <Parallax blur={{ min: -15, max: 15 }} bgImage={BackSoup} strength={-200}>
         <Cover
-          heading={"SOUPS"}
+          heading={"soups"}
           subHeading={
             "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
           }
@@ -100,6 +125,14 @@ const Menu = () => {
       </Parallax>
       <div>
         <MenuCategory data={soup} />
+        <div className="text-center mt-12">
+          <Link
+            to="/shop/soup"
+            className="btn bg-main text-white px-10 border-none hover:bg-[#E7811B]"
+          >
+            Order Now
+          </Link>
+        </div>
       </div>
     </div>
   );
