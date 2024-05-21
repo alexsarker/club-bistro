@@ -4,7 +4,9 @@ import Footer from "../Shared/Footer";
 
 const Root = () => {
   const location = useLocation();
-  const noHeadFoot = location.pathname.includes("login");
+  const noHeadFoot =
+    location.pathname.includes("login") ||
+    location.pathname.includes("register");
   return (
     <div>
       <div className="container mx-auto">
