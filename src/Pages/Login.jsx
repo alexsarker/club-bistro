@@ -1,14 +1,16 @@
 import Img from "/src/assets/others/authentication2 1.svg";
 import BackImg from "/src/assets/home/banner.jpg";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../Controller/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const {
@@ -67,18 +69,27 @@ const Login = () => {
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input
-                  type="password"
-                  name="password"
-                  {...register("password", {
-                    minLength: 6,
-                    maxLength: 20,
-                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
-                  })}
-                  placeholder="Password"
-                  className="input input-bordered"
-                  required
-                />
+                <label className="input input-bordered flex items-center gap-2">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    {...register("password", {
+                      minLength: 6,
+                      maxLength: 20,
+                      pattern:
+                        /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                    })}
+                    className="grow"
+                    placeholder="Password"
+                  />
+                  <span onClick={() => setShowPassword(!showPassword)}>
+                    {showPassword ? (
+                      <IoEyeOffOutline className="text-xl" />
+                    ) : (
+                      <IoEyeOutline className="text-xl" />
+                    )}
+                  </span>
+                </label>
                 {errors.password?.type === "required" && (
                   <span className="text-red-500 pt-2">
                     Password is required
