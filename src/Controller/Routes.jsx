@@ -6,7 +6,8 @@ import Menu from "../Pages/Menu";
 import OurShop from "../Pages/OurShop";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
-import Dashboard from "../Pages/Dashboard";
+import Dashboard from "./Dashboard";
+import Cart from "../Pages/Cart";
 
 export const router = createBrowserRouter([
   {
@@ -43,7 +44,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "cart",
-        element: <Home />,
+        element: <Cart />,
       },
     ],
   },

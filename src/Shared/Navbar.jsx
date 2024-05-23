@@ -93,12 +93,12 @@ const Navbar = () => {
         </div>
         <div className="navbar-end gap-6">
           <Link
-            to="/cartRoom"
+            to="dashboard/cart"
             tabIndex={0}
             role="button"
             className="btn btn-ghost btn-circle"
           >
-            <div className="indicator">
+            <Link to="dashboard/cart" className="indicator">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 text-white hover:text-[#FF9933]"
@@ -116,7 +116,7 @@ const Navbar = () => {
               <span className="badge badge-sm indicator-item">
                 {cart.length}
               </span>
-            </div>
+            </Link>
           </Link>
           {user ? (
             <div className="dropdown dropdown-end">

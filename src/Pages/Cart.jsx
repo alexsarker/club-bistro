@@ -1,6 +1,5 @@
 
-
-const Dashboard = () => {
+const Cart = () => {
     return (
         <div>
             
@@ -8,4 +7,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default Cart;
