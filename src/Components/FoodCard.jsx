@@ -1,16 +1,18 @@
 import { Link, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { MdErrorOutline } from "react-icons/md";
-import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import useCart from "../hooks/useCart";
 
 const FoodCard = ({ item }) => {
   const { name, image, price, recipe, _id } = item;
   const { user } = useAuth();
   const location = useLocation();
+  const axiosSecure = useAxiosSecure();
+  const [, refetch] = useCart();
 
-  const handleAddToCart = (food) => {
-    console.log(food);
+  const handleAddToCart = () => {
     if (user && user.email) {
       const cartItem = {
         menuId: _id,
@@ -19,10 +21,11 @@ const FoodCard = ({ item }) => {
         image,
         price,
       };
-      axios.post("http://localhost:5000/carts", cartItem).then((res) => {
+      axiosSecure.post("/carts", cartItem).then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
-          toast.success(`${name} added Successfully`);
+          toast.success(`${name} added Successfully`); 
+          refetch();
         }
       });
     }
@@ -42,7 +45,7 @@ const FoodCard = ({ item }) => {
         {user ? (
           <div className="card-actions mx-auto">
             <button
-              onClick={() => handleAddToCart(item)}
+              onClick={handleAddToCart}
               className="btn bg-main text-white px-10 border-none hover:bg-[#E7811B]"
             >
               Add to Cart
