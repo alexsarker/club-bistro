@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
   const { user } = useContext(AuthContext);
+  const location = useLocation();
 
   if (user) {
     return children;
@@ -16,5 +17,5 @@ const PrivateRoute = ({ children }) => {
 export default PrivateRoute;
 
 PrivateRoute.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.node.isRequired,
 };

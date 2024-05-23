@@ -13,6 +13,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
   const {
     register,
     handleSubmit,
@@ -22,7 +23,7 @@ const Register = () => {
     createUser(data.email, data.password)
       .then(() => {
         updateUserProfile(data.name, data.photo);
-        navigate(location?.state ? location?.state : "/");
+        navigate(from, { replace: true });
         toast.success("Created Successfully");
       })
       .catch(() => {

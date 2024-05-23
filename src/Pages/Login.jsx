@@ -11,19 +11,18 @@ import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
-
     loginUser(data.email, data.password)
       .then(() => {
-        navigate(location?.state ? location?.state : "/");
+        navigate(from, { replace: true });
         toast.success("You're In");
       })
       .catch(() => {
