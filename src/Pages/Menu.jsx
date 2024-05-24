@@ -26,7 +26,7 @@ const Menu = () => {
       </Helmet>
 
       <div
-        className="hero h-[700px] rounded-b-xl"
+        className="hero h-[700px]"
         style={{
           backgroundImage: `url(${BackImg})`,
         }}
@@ -38,7 +38,7 @@ const Menu = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="container mx-auto">
         <SectionTitle subHeading={"Don't miss"} heading={"TODAY'S OFFER"} />
         <MenuCategory data={offer} />
       </div>
@@ -55,7 +55,7 @@ const Menu = () => {
           }
         />
       </Parallax>
-      <div>
+      <div className="container mx-auto">
         <MenuCategory data={dessert} />
         <div className="text-center mt-12">
           <Link
@@ -79,7 +79,7 @@ const Menu = () => {
           }
         />
       </Parallax>
-      <div>
+      <div className="container mx-auto">
         <MenuCategory data={pizza} />
         <div className="text-center mt-12">
           <Link
@@ -103,7 +103,7 @@ const Menu = () => {
           }
         />
       </Parallax>
-      <div>
+      <div className="container mx-auto">
         <MenuCategory data={salad} />
         <div className="text-center mt-12">
           <Link
@@ -123,7 +123,7 @@ const Menu = () => {
           }
         />
       </Parallax>
-      <div>
+      <div className="container mx-auto">
         <MenuCategory data={soup} />
         <div className="text-center mt-12">
           <Link

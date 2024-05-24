@@ -1,7 +1,7 @@
 
 const MenuCategory = ({ data }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12">
       {data?.map((item) => (
         <div key={item._id} className="grid grid-cols-5">
           <img

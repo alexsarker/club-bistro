@@ -4,12 +4,12 @@ import FeaturedImg from "/src/assets/home/featured.jpg";
 const Featured = () => {
   return (
     <div
-      className="hero min-h-screen rounded-2xl bg-fixed"
+      className="hero min-h-screen bg-fixed"
       style={{
         backgroundImage: `url(${FeaturedImg})`,
       }}
     >
-      <div className="hero-overlay bg-black bg-opacity-60 rounded-2xl"></div>
+      <div className="hero-overlay bg-black bg-opacity-60"></div>
       <div className="hero-content text-neutral-content">
         <div>
           <SectionTitle subHeading={"Check it out"} heading={"FEATURED"} />

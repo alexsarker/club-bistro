@@ -15,9 +15,13 @@ const Home = () => {
       <Banner />
       <Category />
       <Board />
-      <PopularMenu />
+      <div className="container mx-auto">
+        <PopularMenu />
+      </div>
       <Featured />
-      <Testimonial />
+      <div className="container mx-auto">
+        <Testimonial />
+      </div>
     </div>
   );
 };

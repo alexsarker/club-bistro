@@ -3,7 +3,7 @@ import BanImg from "/src/assets/home/chef-service.jpg";
 const Board = () => {
   return (
     <div
-      className="hero min-h-screen rounded-xl"
+      className="hero min-h-screen"
       style={{
         backgroundImage: `url(${BanImg})`,
       }}

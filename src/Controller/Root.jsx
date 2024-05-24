@@ -9,7 +9,7 @@ const Root = () => {
     location.pathname.includes("register");
   return (
     <div>
-      <div className="container mx-auto">
+      <div>
         {noHeadFoot || <Navbar></Navbar>}
         <Outlet></Outlet>
       </div>

@@ -1,22 +1,29 @@
 import { Link, Outlet } from "react-router-dom";
 import logo from "/src/assets/navLogo.svg";
 import { FaCartShopping } from "react-icons/fa6";
-import { FaCalendarAlt, FaWallet } from "react-icons/fa";
+import {
+  FaCalendarAlt,
+  FaHouseUser,
+  FaShoppingBag,
+  FaWallet,
+} from "react-icons/fa";
 import { GoHomeFill } from "react-icons/go";
-import { MdReviews } from "react-icons/md";
+import { MdMenuBook, MdReviews } from "react-icons/md";
 import { RiReservedFill } from "react-icons/ri";
+import useCart from "../hooks/useCart";
 const Dashboard = () => {
+  const [cart] = useCart();
   return (
-    <div className="flex">
-      <div className="drawer lg:drawer-open">
+    <div className="md:flex lg:flex bg-[#F6F6F6]">
+      <div className="drawer lg:drawer-open border w-72">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
           {/* Page content here */}
           <label
             htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
+            className="btn bg-main text-white hover:bg-[#E7811B] lg:hidden"
           >
-            Open drawer
+            Menu
           </label>
         </div>
         <div className="drawer-side">
@@ -33,7 +40,7 @@ const Dashboard = () => {
                 to="/dashboard/home"
                 className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
               >
-                <GoHomeFill />
+                <FaHouseUser />
                 User Home
               </Link>
             </li>
@@ -43,7 +50,7 @@ const Dashboard = () => {
                 className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
               >
                 <FaCartShopping />
-                My Cart
+                My Cart ({cart.length})
               </Link>
             </li>
             <li>
@@ -82,10 +89,38 @@ const Dashboard = () => {
                 My booking
               </Link>
             </li>
+            <div className="divider"></div>
+            <li>
+              <Link
+                to="/"
+                className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
+              >
+                <GoHomeFill />
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/menu"
+                className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
+              >
+                <MdMenuBook />
+                Menu
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/shop/salad"
+                className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
+              >
+                <FaShoppingBag />
+                Shop
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
-      <div className="flex-1">
+      <div className="mx-auto">
         <Outlet></Outlet>
       </div>
     </div>

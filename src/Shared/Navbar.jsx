@@ -54,7 +54,7 @@ const Navbar = () => {
   );
   return (
     <div className="relative">
-      <div className="navbar bg-opacity-20 z-20 bg-black absolute p-4 md:p-6 lg:p-6">
+      <div className="navbar bg-opacity-20 z-20 bg-black absolute px-4 md:px-12 lg:px-20">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
