@@ -7,8 +7,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Register = () => {
+  const axiosPublic = useAxiosPublic();
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
@@ -22,9 +24,19 @@ const Register = () => {
   const onSubmit = (data) => {
     createUser(data.email, data.password)
       .then(() => {
-        updateUserProfile(data.name, data.photo);
-        navigate(from, { replace: true });
-        toast.success("Created Successfully");
+        updateUserProfile(data.name, data.photo).then(() => {
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+            photo: data.photo,
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              navigate(from, { replace: true });
+              toast.success("Created Successfully");
+            }
+          });
+        });
       })
       .catch(() => {
         toast.error("Already exist email!");

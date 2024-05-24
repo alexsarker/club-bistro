@@ -8,6 +8,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Dashboard from "./Dashboard";
 import Cart from "../Pages/Cart";
+import PrivateRoute from "../Controller/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -39,7 +40,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
