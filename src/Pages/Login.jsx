@@ -1,15 +1,16 @@
 import Img from "/src/assets/others/authentication2 1.svg";
 import BackImg from "/src/assets/home/banner.jpg";
-import { useContext, useState } from "react";
-import { AuthContext } from "../Controller/AuthProvider";
+import { useState } from "react";
+import useAuth from "../hooks/useAuth";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, googleIn } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -27,6 +28,17 @@ const Login = () => {
       })
       .catch(() => {
         toast.error("Already exist email!");
+      });
+  };
+
+  const handleGoogle = () => {
+    googleIn()
+      .then(() => {
+        navigate(from, { replace: true });
+        toast.success("Login Successfully");
+      })
+      .catch(() => {
+        toast.error("Something Wrong");
       });
   };
 
@@ -114,6 +126,16 @@ const Login = () => {
               <div className="form-control mt-6">
                 <button className="btn bg-main text-white hover:bg-[#E7811B]">
                   Login
+                </button>
+              </div>
+              <div className="divider my-4">Or</div>
+              <div>
+                <button
+                  onClick={() => handleGoogle()}
+                  className="btn btn-outline w-full border-gray-300 hover:bg-[#FF9933] hover:text-white hover:border-none"
+                >
+                  Login with Google
+                  <FcGoogle className="text-xl" />
                 </button>
               </div>
               <p className="text-center mt-2">

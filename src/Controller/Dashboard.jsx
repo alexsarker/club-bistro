@@ -13,6 +13,8 @@ import { RiReservedFill } from "react-icons/ri";
 import useCart from "../hooks/useCart";
 const Dashboard = () => {
   const [cart] = useCart();
+
+  const isAdmin = true;
   return (
     <div className="md:flex lg:flex bg-[#F6F6F6]">
       <div className="drawer lg:drawer-open border w-72">

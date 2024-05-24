@@ -1,17 +1,18 @@
 import Img from "/src/assets/others/authentication2 1.svg";
 import BackImg from "/src/assets/home/banner.jpg";
-import { useContext, useState } from "react";
-import { AuthContext } from "../Controller/AuthProvider";
+import { useState } from "react";
+import useAuth from "../hooks/useAuth";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
   const axiosPublic = useAxiosPublic();
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile, googleIn } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -41,6 +42,26 @@ const Register = () => {
       .catch(() => {
         toast.error("Already exist email!");
       });
+  };
+
+  const handleGoogle = () => {
+    googleIn().then((result) => {
+      const userInfo = {
+        email: result.user?.email,
+        name: result.user?.displayName,
+        photo: result.user?.photoURL,
+      };
+      axiosPublic
+        .post("/users", userInfo)
+        .then((res) => {
+          console.log(res.data);
+          navigate(from, { replace: true });
+          toast.success("Registered Successfully");
+        })
+        .catch(() => {
+          toast.error("Something Wrong");
+        });
+    });
   };
 
   return (
@@ -163,6 +184,16 @@ const Register = () => {
               <div className="form-control mt-6">
                 <button className="btn bg-main text-white hover:bg-[#E7811B]">
                   Register
+                </button>
+              </div>
+              <div className="divider my-4">Or</div>
+              <div>
+                <button
+                  onClick={() => handleGoogle()}
+                  className="btn btn-outline w-full border-gray-300 hover:bg-[#FF9933] hover:text-white hover:border-none"
+                >
+                  Register with Google
+                  <FcGoogle className="text-xl" />
                 </button>
               </div>
               <p className="text-center mt-2">
