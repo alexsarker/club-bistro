@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import logo from "/src/assets/navLogo.svg";
-import { FaCartShopping } from "react-icons/fa6";
+import { FaBook, FaCartShopping, FaList, FaUsers } from "react-icons/fa6";
 import {
   FaCalendarAlt,
   FaHouseUser,
@@ -11,6 +11,7 @@ import { GoHomeFill } from "react-icons/go";
 import { MdMenuBook, MdReviews } from "react-icons/md";
 import { RiReservedFill } from "react-icons/ri";
 import useCart from "../hooks/useCart";
+import { IoFastFoodSharp } from "react-icons/io5";
 const Dashboard = () => {
   const [cart] = useCart();
 
@@ -37,60 +38,115 @@ const Dashboard = () => {
           <ul className="menu p-4 w-72 min-h-full bg-main font-semibold cinzel text-base">
             <img src={logo} className="max-w-56 mb-14" />
             {/* Sidebar content here */}
-            <li>
-              <Link
-                to="/dashboard/home"
-                className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
-              >
-                <FaHouseUser />
-                User Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/dashboard/cart"
-                className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
-              >
-                <FaCartShopping />
-                My Cart ({cart.length})
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/dashboard/reservation"
-                className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
-              >
-                <FaCalendarAlt />
-                Reservation
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/dashboard/payment"
-                className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
-              >
-                <FaWallet />
-                Payment history
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/dashboard/review"
-                className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
-              >
-                <MdReviews />
-                Add review
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/dashboard/booking"
-                className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
-              >
-                <RiReservedFill />
-                My booking
-              </Link>
-            </li>
+            {isAdmin ? (
+              <>
+                {" "}
+                <li>
+                  <Link
+                    to="/dashboard/home"
+                    className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
+                  >
+                    <FaHouseUser />
+                    Admin Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/dashboard/home"
+                    className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
+                  >
+                    <IoFastFoodSharp />
+                    Add Items
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/dashboard/home"
+                    className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
+                  >
+                    <FaList />
+                    Manage Items
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/dashboard/home"
+                    className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
+                  >
+                    <FaBook />
+                    Manage Bookings
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/dashboard/allUsers"
+                    className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
+                  >
+                    <FaUsers />
+                    All Users
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                {" "}
+                <li>
+                  <Link
+                    to="/dashboard/home"
+                    className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
+                  >
+                    <FaHouseUser />
+                    User Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/dashboard/cart"
+                    className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
+                  >
+                    <FaCartShopping />
+                    My Cart ({cart.length})
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/dashboard/reservation"
+                    className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
+                  >
+                    <FaCalendarAlt />
+                    Reservation
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/dashboard/payment"
+                    className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
+                  >
+                    <FaWallet />
+                    Payment history
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/dashboard/review"
+                    className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
+                  >
+                    <MdReviews />
+                    Add review
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/dashboard/booking"
+                    className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
+                  >
+                    <RiReservedFill />
+                    My booking
+                  </Link>
+                </li>
+              </>
+            )}
+            {/* shared nav links */}
             <div className="divider"></div>
             <li>
               <Link

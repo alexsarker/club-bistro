@@ -7,8 +7,9 @@ import OurShop from "../Pages/OurShop";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Dashboard from "./Dashboard";
-import Cart from "../Pages/Cart";
+import Cart from "../DashPages/Cart";
 import PrivateRoute from "../Controller/PrivateRoute";
+import AllUsers from "../DashAdmin/AllUsers";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,12 @@ export const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart />,
+      },
+
+      // admin panel
+      {
+        path: "allUsers",
+        element: <AllUsers />,
       },
     ],
   },
