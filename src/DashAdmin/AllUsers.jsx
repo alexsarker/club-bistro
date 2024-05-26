@@ -60,14 +60,14 @@ const AllUsers = () => {
                       <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
                           <img
-                            src={user.image}
+                            src={user.photo}
                             alt="Avatar Tailwind CSS Component"
                           />
                         </div>
                       </div>
                     </div>
                   </td>
-                  <td>{user.name}</td>
+                  <td>{user.email}</td>
                   <td>
                     <button className="btn btn-sm bg-[#FF9933]">
                       <FaUser className="text-white" />
