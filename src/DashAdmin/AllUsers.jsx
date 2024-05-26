@@ -22,6 +22,16 @@ const AllUsers = () => {
       }
     });
   };
+
+  const handleMakeAdmin = (user) => {
+    axiosSecure.patch(`/users/admin/${user?._id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        toast.success(`${user.name} is an Admin Now!`);
+      }
+    });
+  };
   return (
     <div className="mt-12">
       <SectionTitle
@@ -69,9 +79,16 @@ const AllUsers = () => {
                   </td>
                   <td>{user.email}</td>
                   <td>
-                    <button className="btn btn-sm bg-[#FF9933]">
-                      <FaUser className="text-white" />
-                    </button>
+                    {user.role === "admin" ? (
+                      <p>Admin</p>
+                    ) : (
+                      <button
+                        onClick={() => handleMakeAdmin(user)}
+                        className="btn btn-sm bg-[#FF9933]"
+                      >
+                        <FaUser className="text-white" />
+                      </button>
+                    )}
                   </td>
                   <th>
                     <button
