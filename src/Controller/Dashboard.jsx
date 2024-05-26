@@ -12,10 +12,11 @@ import { MdMenuBook, MdReviews } from "react-icons/md";
 import { RiReservedFill } from "react-icons/ri";
 import useCart from "../hooks/useCart";
 import { IoFastFoodSharp } from "react-icons/io5";
+import useAdmin from "../hooks/useAdmin";
 const Dashboard = () => {
   const [cart] = useCart();
 
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
   return (
     <div className="md:flex lg:flex bg-[#F6F6F6]">
       <div className="drawer lg:drawer-open border w-72">
