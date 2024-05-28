@@ -9,7 +9,9 @@ import Register from "../Pages/Register";
 import Dashboard from "./Dashboard";
 import Cart from "../DashPages/Cart";
 import PrivateRoute from "../Controller/PrivateRoute";
+import AdminRoute from "../Controller/AdminRoute";
 import AllUsers from "../DashAdmin/AllUsers";
+import AddItems from "../DashAdmin/AddItems";
 
 export const router = createBrowserRouter([
   {
@@ -52,11 +54,21 @@ export const router = createBrowserRouter([
         path: "cart",
         element: <Cart />,
       },
-
-      // admin panel
       {
         path: "allUsers",
-        element: <AllUsers />,
+        element: (
+          <AdminRoute>
+            <AllUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "addItems",
+        element: (
+          <AdminRoute>
+            <AddItems />
+          </AdminRoute>
+        ),
       },
     ],
   },

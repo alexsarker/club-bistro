@@ -53,7 +53,7 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <Link
-                    to="/dashboard/home"
+                    to="/dashboard/addItems"
                     className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
                   >
                     <IoFastFoodSharp />

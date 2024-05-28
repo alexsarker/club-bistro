@@ -9,18 +9,18 @@ const useAxiosSecure = () => {
   const navigate = useNavigate();
   const { logOut } = useAuth();
   axiosSecure.interceptors.request.use(
-    (config) => {
+    function (config) {
       const token = localStorage.getItem("access-token");
       config.headers.authorization = `Bearer ${token}`;
       return config;
     },
-    (error) => {
+    function (error) {
       return Promise.reject(error);
     }
   );
 
   axiosSecure.interceptors.response.use(
-    (response) => {
+    function (response) {
       return response;
     },
     async (error) => {
