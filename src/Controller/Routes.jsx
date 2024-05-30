@@ -12,6 +12,7 @@ import PrivateRoute from "../Controller/PrivateRoute";
 import AdminRoute from "../Controller/AdminRoute";
 import AllUsers from "../DashAdmin/AllUsers";
 import AddItems from "../DashAdmin/AddItems";
+import ManageItems from "../DashAdmin/ManageItems";
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +68,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AddItems />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageItems",
+        element: (
+          <AdminRoute>
+            <ManageItems />
           </AdminRoute>
         ),
       },

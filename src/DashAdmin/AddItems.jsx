@@ -1,15 +1,17 @@
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import SectionTitle from "../Components/SectionTitle";
 import { useForm } from "react-hook-form";
 import { FaUtensils } from "react-icons/fa";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddItems = () => {
   const axiosPublic = useAxiosPublic();
-  const { register, handleSubmit } = useForm();
+  const axiosSecure = useAxiosSecure();
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
     console.log(data);
 
@@ -19,6 +21,20 @@ const AddItems = () => {
         "content-type": "multipart/form-data",
       },
     });
+    if (res.data.success) {
+      const menuItem = {
+        name: data.name,
+        category: data.category,
+        price: parseFloat(data.price),
+        recipe: data.details,
+        image: res.data.data.display_url,
+      };
+      const menuRes = await axiosSecure.post("/menu", menuItem);
+      if (menuRes.data.insertedId) {
+        reset();
+        toast.success(`${data.name} added in item`);
+      }
+    }
   };
 
   return (
@@ -56,11 +72,11 @@ const AddItems = () => {
               <option disabled defaultValue>
                 Select a Category
               </option>
-              <option value="Salad">Salad</option>
-              <option value="Pizza">Pizza</option>
-              <option value="Soup">Soup</option>
-              <option value="Dessert">Dessert</option>
-              <option value="Drinks">Drinks</option>
+              <option value="salad">Salad</option>
+              <option value="pizza">Pizza</option>
+              <option value="soup">Soup</option>
+              <option value="dessert">Dessert</option>
+              <option value="drinks">Drinks</option>
             </select>
           </div>
           <div className="form-control">

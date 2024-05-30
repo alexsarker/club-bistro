@@ -62,7 +62,7 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <Link
-                    to="/dashboard/home"
+                    to="/dashboard/manageItems"
                     className="hover:bg-[#E7811B] items-center gap-4 hover:text-white"
                   >
                     <FaList />
