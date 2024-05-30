@@ -13,6 +13,7 @@ import AdminRoute from "../Controller/AdminRoute";
 import AllUsers from "../DashAdmin/AllUsers";
 import AddItems from "../DashAdmin/AddItems";
 import ManageItems from "../DashAdmin/ManageItems";
+import UpdateItem from "../DashAdmin/UpdateItem";
 
 export const router = createBrowserRouter([
   {
@@ -78,6 +79,16 @@ export const router = createBrowserRouter([
             <ManageItems />
           </AdminRoute>
         ),
+      },
+      {
+        path: "updateItem/:id",
+        element: (
+          <AdminRoute>
+            <UpdateItem />
+          </AdminRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/menu/${params.id}`),
       },
     ],
   },

@@ -1,11 +1,10 @@
 import toast, { Toaster } from "react-hot-toast";
-
 import { RiDeleteBinLine } from "react-icons/ri";
 import SectionTitle from "../Components/SectionTitle";
-
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import useMenu from "../hooks/useMenu";
 import { BiEdit } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
   const [menu, refetch] = useMenu();
@@ -21,8 +20,6 @@ const ManageItems = () => {
       }
     });
   };
-
-  const handleMakeAdmin = () => {};
   return (
     <div className="mt-12">
       <SectionTitle
@@ -72,12 +69,12 @@ const ManageItems = () => {
                   <td>{item.name}</td>
                   <td>${item.price}</td>
                   <td>
-                    <button
-                      onClick={() => handleMakeAdmin(item)}
+                    <Link
+                      to={`/dashboard/updateItem/${item._id}`}
                       className="btn btn-sm bg-[#FF9933]"
                     >
                       <BiEdit className="text-white text-xl" />
-                    </button>
+                    </Link>
                   </td>
                   <th>
                     <button
