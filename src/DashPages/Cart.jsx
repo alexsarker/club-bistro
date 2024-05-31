@@ -3,6 +3,7 @@ import SectionTitle from "../Components/SectionTitle";
 import useCart from "../hooks/useCart";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import toast, { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
@@ -28,9 +29,20 @@ const Cart = () => {
           <h2>Total Orders: {cart.length}</h2>
           <h2>Total Price: {totalPrice}</h2>
           <span className="place-self-end">
-            <button className="btn bg-main text-white hover:bg-[#E7811B]">
-              PAY
-            </button>
+            {!cart.length ? (
+              <button
+                disabled
+                className="btn bg-main text-white hover:bg-[#E7811B]"
+              >
+                PAY
+              </button>
+            ) : (
+              <Link to="/dashboard/payment">
+                <button className="btn bg-main text-white hover:bg-[#E7811B]">
+                  PAY
+                </button>
+              </Link>
+            )}
           </span>
         </div>
 

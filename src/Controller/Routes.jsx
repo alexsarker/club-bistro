@@ -14,6 +14,7 @@ import AllUsers from "../DashAdmin/AllUsers";
 import AddItems from "../DashAdmin/AddItems";
 import ManageItems from "../DashAdmin/ManageItems";
 import UpdateItem from "../DashAdmin/UpdateItem";
+import Payment from "../DashPages/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +57,12 @@ export const router = createBrowserRouter([
         path: "cart",
         element: <Cart />,
       },
+      {
+        path: "payment",
+        element: <Payment />,
+      },
+
+      // admin routes
       {
         path: "allUsers",
         element: (
